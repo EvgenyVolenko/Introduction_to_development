@@ -1,13 +1,35 @@
 ﻿Console.Clear();
 
-string[] array = { "hello", "2", "world", ":-)", "1234", "1567", "-2", "computer science", "Russia", "Denmark", "Kazan" };
+string str = String.Empty;
 
+str = FillString();
+Console.WriteLine(str);
+
+string[] array = str.Split(' ');
+
+Console.WriteLine($"У нас получился следующий массив [{string.Join(", ", array)}]");
+
+Console.Write("Задайте длинну строки для поиска в виде числа >= 1: ");
 int countSimbols = vvod();
 
 string[] newArray = new string[CountingNumbers(array, countSimbols)];
+Console.WriteLine(newArray.Length);
 FillNewArray(newArray, array, countSimbols);
 
 Console.WriteLine($"У нас получился следующий массив [{string.Join(", ", newArray)}]");
+
+string FillString()
+{
+    Console.WriteLine("Вводите строки. Ввод 'stop' прерывает ввод");
+    string entStr = String.Empty;
+    string fullStr = String.Empty;
+    while (entStr != "stop")
+    {
+       entStr = Console.ReadLine();
+       fullStr = fullStr + entStr + " ";
+    }
+    return fullStr;
+}
 
 void FillNewArray(string[] newArr, string[] col, int countS)
 {
@@ -44,8 +66,8 @@ int vvod()
     {
         if (int.TryParse(Console.ReadLine(), out digit))
         {
-            if (digit >= 0) break;
-            else Console.Write("Задайте длинну строки для поиска в виде числа >= 1: ");
+            if (digit >= 1) break;
+            else Console.Write("Число должно быть >= 1: ");
         }
         else Console.Write("Ну просил же число! ");
     }
