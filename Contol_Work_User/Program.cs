@@ -28,6 +28,7 @@ string FillString()
        entStr = Console.ReadLine();
        fullStr = fullStr + entStr + " ";
     }
+    fullStr=fullStr.Remove(fullStr.Length-1);
     return fullStr;
 }
 
