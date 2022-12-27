@@ -3,17 +3,14 @@
 string str = String.Empty;
 
 str = FillString();
-Console.WriteLine(str);
 
 string[] array = str.Split(' ');
-
-Console.WriteLine($"У нас получился следующий массив [{string.Join(", ", array)}]");
 
 Console.Write("Задайте длинну строки для поиска в виде числа >= 1: ");
 int countSimbols = vvod();
 
 string[] newArray = new string[CountingNumbers(array, countSimbols)];
-Console.WriteLine(newArray.Length);
+
 FillNewArray(newArray, array, countSimbols);
 
 Console.WriteLine($"У нас получился следующий массив [{string.Join(", ", newArray)}]");
