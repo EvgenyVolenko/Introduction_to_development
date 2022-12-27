@@ -2,7 +2,7 @@
 
 string[] array = { "hello", "2", "world", ":-)", "1234", "1567", "-2", "computer science", "Russia", "Denmark", "Kazan" };
 
-int countSimbols = 3;
+int countSimbols = vvod();
 
 string[] newArray = new string[CountingNumbers(array, countSimbols)];
 FillNewArray(newArray, array, countSimbols);
@@ -35,4 +35,19 @@ int CountingNumbers(string[] arr, int countS)
         }
     }
     return countOccur;
+}
+
+int vvod()
+{
+    int digit;
+    while (true)
+    {
+        if (int.TryParse(Console.ReadLine(), out digit))
+        {
+            if (digit >= 0) break;
+            else Console.Write("Задайте длинну строки для поиска в виде числа >= 1: ");
+        }
+        else Console.Write("Ну просил же число! ");
+    }
+    return digit;
 }
