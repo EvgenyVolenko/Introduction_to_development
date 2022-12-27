@@ -1,28 +1,36 @@
 ﻿string[] array = { "hello", "2", "world", ":-)", "1234", "1567", "-2", "computer science", "Russia", "Denmark", "Kazan" };
 
-int countSimbols = 4;
-int countOccur = 0;
-int n = array.Length;
+int countSimbols = 3;
 
-
-for (int i = 0; i < n; i++)
-{
-    if(array[i].Length < countSimbols)
-    {
-        countOccur++;
-    }
-}
-
-string[] newArray = new string[countOccur];
-int positionNewArray = 0;
-
-for (int i = 0; i < n; i++)
-{
-    if(array[i].Length < countSimbols)
-    {
-        newArray[positionNewArray] = array[i];
-        positionNewArray++;
-    }
-}
+string[] newArray = new string[CountingNumbers(array, countSimbols)];
+FillNewArray(newArray, array, countSimbols);
 
 Console.WriteLine($"У нас получился следующий массив [{string.Join(", ", newArray)}]");
+
+void FillNewArray(string[] newArr, string[] col, int countS)
+{
+    int positionNewArr = 0;
+    int n = col.Length;
+    for (int i = 0; i < n; i++)
+    {
+        if (col[i].Length <= countS)
+        {
+            newArr[positionNewArr] = col[i];
+            positionNewArr++;
+        }
+    }
+}
+
+int CountingNumbers(string[] arr, int countS)
+{
+    int countOccur = 0;
+    int n = arr.Length;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i].Length <= countS)
+        {
+            countOccur++;
+        }
+    }
+    return countOccur;
+}
